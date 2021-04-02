@@ -5,34 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="css/styles.css">
   
   <title>Frontend Mentor | Coding Bootcamp Testimonials Slider</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
 
-  “ I’ve been interested in coding for a while but never taken the jump, until now. 
-  I couldn’t recommend this course enough. I’m now in the job of my dreams and so 
-  excited about the future. ”
+  <section class="testimonials">
+    <section class="testimonial__items">
+      <div class="testimonial__img__container">
+        <img src="images/image-tanya.jpg" alt="photo of the said person" class="photo">
+        <div class="btn__container">
+          <button class="btn">
+            <img src="images/icon-prev.svg" alt="photo of button previous" class="btn__img">
+          </button>
+          <button class="btn">
+            <img src="images/icon-next.svg" alt="photo of button next" class="btn__img">
+          </button>
+        </div>
+      </div>
+      <div class="testimonial__text__container">
+        <div class="testimonial__quote">
+          <p>
+            “ I’ve been interested in coding for a while but never taken the jump, until now. I couldn’t recommend this course enough. I’m now in the job of my dreams and so excited about the future. ”
+          </p>
+        </div>
+        <div class="testimonial__author">
+          <h1>Tanya Sinclair</h1>
+          <span>UX Engineer</span>
+        </div>
+      </div>
+    </section>
 
-  Tanya Sinclair
-  UX Engineer
+    <!-- <section class="testimonial__items">
+      <div class="testimonial__img__container">
+        <img src="images/image-john.jpg" alt="photo of the said person" class="photo">
+        <div class="btn__container">
+          <button class="btn slider">
+            <img src="images/icon-prev.svg" alt="photo of button previous" class="btn__img">
+          </button>
+          <button class="btn slider">
+            <img src="images/icon-next.svg" alt="photo of button next" class="btn__img">
+          </button>
+        </div>
+      </div>
+      <div class="testimonial__text__container">
+        <div class="testimonial__quote">
+          <p>
+            “ If you want to lay the best foundation possible I’d recommend taking this course. The depth the instructors go into is incredible. I now feel so confident about starting up as a professional developer. ”
+          </p>
+        </div>
+        <div class="testimonial__author">
+          <h1>John Tarkpor</h1>
+          <span>Junior Front-end Developer</span>
+        </div>
+      </div>
+    </section> -->
 
-  “ If you want to lay the best foundation possible I’d recommend taking this course. 
-  The depth the instructors go into is incredible. I now feel so confident about 
-  starting up as a professional developer. ”
-
-  John Tarkpor
-  Junior Front-end Developer
+    
+  </section>
   
-  <div class="attribution">
+  <footer class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+    Coded by <a href="#">XIII</a>.
+  </footer>
+
+  <script src="scripts/script.js"></script>
 </body>
 </html>
