@@ -1,21 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
    console.log('Hello');
 
-   class Author {
+   class Person {
       constructor(photo, fullName, jobDescription, testimonial) {
          this.photo = photo;
          this.fullName = fullName;
          this.jobDescription = jobDescription;
          this.testimonial = testimonial;
       }
-      AuthorDescription() {
+      PersonDescription() {
          return `Full Name : ${this.fullName} \nJob : ${this.jobDescription} \nTestimonial: ${this.testimonial} \nPhoto File Location: ${this.photo}`;
       }
    }
 
    const persons = [
-      new Author('images/image-tanya.jpg', 'Tanya Sinclair', 'UX Engineer', '“ I’ve been interested in coding for a while but never taken the jump, until now. I couldn’t recommend this course enough. I’m now in the job of my dreams and so excited about the future. ”'),
-      new Author('images/image-john.jpg', 'John Tarkpor', 'Junior Front-end Developer', '“ If you want to lay the best foundation possible I’d recommend taking this course. The depth the instructors go into is incredible. I now feel so confident about starting up as a professional developer. ”')
+      new Person('images/image-tanya.jpg', 'Tanya Sinclair', 'UX Engineer', '“ I’ve been interested in coding for a while but never taken the jump, until now. I couldn’t recommend this course enough. I’m now in the job of my dreams and so excited about the future. ”'),
+      new Person('images/image-john.jpg', 'John Tarkpor', 'Junior Front-end Developer', '“ If you want to lay the best foundation possible I’d recommend taking this course. The depth the instructors go into is incredible. I now feel so confident about starting up as a professional developer. ”')
    ];
 
    const buttons = document.querySelectorAll('.btn');
@@ -26,20 +26,32 @@ document.addEventListener('DOMContentLoaded', () => {
          let jobDesc = document.querySelector('.testimonial__author span');
          let testimonialQuote = document.querySelector('.testimonial__quote p');
          let photoFLocation = document.querySelector('.photo');
-
+         let testimonials = document.querySelector('.testimonial__items');
+         leftOrRight(event,testimonials);
+         
          for(let person of persons) {
             if(person.fullName !== currentPerson.innerHTML) {
-               console.log('true');
-               console.log('Current : ' + currentPerson.innerHTML);
-               console.log('Person : ' + person.fullName);
                currentPerson.innerHTML = person.fullName;
                jobDesc.innerHTML = person.jobDescription;
                testimonialQuote.innerHTML = person.testimonial;
                photoFLocation.src = person.photo;
+               setTimeout(()=> {
+                  leftOrRight(event,testimonials);
+
+               },1000);
                break;
             }
          }
       });
+   }
+
+   function leftOrRight(e, testimonials) {
+      if(e.target.classList.contains('next')===true) {
+         testimonials.classList.toggle('transition--opacity--left');
+      }
+      else if(e.target.classList.contains('prev')==true) {
+         testimonials.classList.toggle('transition--opacity--right');
+      }
    }
 
 });

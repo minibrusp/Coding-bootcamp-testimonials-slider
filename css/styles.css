@@ -36,6 +36,7 @@ body {
    border-radius: 5px;
 }
 
+
 .testimonials {
    position: relative;
    width: 100%;
@@ -53,7 +54,6 @@ body {
    align-items: center;
    margin: 23px auto;
    padding: 0 14px;
-
 }
 
 .testimonial__img__container {
@@ -162,4 +162,99 @@ body {
 
 .attribution a {
    color: hsl(228, 45%, 44%);
+}
+
+
+/* Animations  */
+
+.transition--opacity--left {
+   animation: FromRight 1s;
+}
+
+.transition--opacity--right {
+   animation: FromLeft 1s;
+}
+
+@keyframes FromRight {
+   0% {
+      transform: translateX(200px);
+   }
+
+   20% {
+      transform: translateX(-100px);
+   }
+
+   30% {
+      transform: translateX(100px);
+   }
+
+   40% {
+      transform: translateX(-50px);
+   }
+
+   50% {
+      transform: translateX(25px);
+   }
+
+   60% {
+      transform: translateX(-10px);
+   }
+
+   70% {
+      transform: translateX(5px);
+   }
+
+   80% {
+      transform: translateX(-2px);
+   }
+
+   90% {
+      transform: translateX(1px);
+   }
+
+   100% {
+      transform: translateX(0);
+   }
+}
+
+@keyframes FromLeft {
+   0% {
+      transform: translateX(-200px);
+   }
+
+   20% {
+      transform: translateX(100px);
+   }
+
+   30% {
+      transform: translateX(-100px);
+   }
+
+   40% {
+      transform: translateX(50px);
+   }
+
+   50% {
+      transform: translateX(-25px);
+   }
+
+   60% {
+      transform: translateX(10px);
+   }
+
+   70% {
+      transform: translateX(-5px);
+   }
+
+   80% {
+      transform: translateX(2px);
+   }
+
+   90% {
+      transform: translateX(-1px);
+   }
+
+   100% {
+      transform: translateX(0);
+   }
 }
