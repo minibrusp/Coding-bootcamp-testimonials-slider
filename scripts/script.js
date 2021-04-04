@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
    for(let button of buttons) {
       button.addEventListener('click', (event) => {
-         let currentPerson = document.querySelector('.testimonial__author h1');
+         let currentPerson = document.querySelector('.testimonial__author h2');
          let jobDesc = document.querySelector('.testimonial__author span');
          let testimonialQuote = document.querySelector('.testimonial__quote p');
          let photoFLocation = document.querySelector('.photo');
