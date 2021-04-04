@@ -27,28 +27,40 @@ document.addEventListener('DOMContentLoaded', () => {
          let testimonialQuote = document.querySelector('.testimonial__quote p');
          let photoFLocation = document.querySelector('.photo');
          let testimonials = document.querySelector('.testimonial__items');
-         leftOrRight(event,testimonials);
-         
-         for(let person of persons) {
-            if(person.fullName !== currentPerson.innerHTML) {
-               currentPerson.innerHTML = person.fullName;
-               jobDesc.innerHTML = person.jobDescription;
-               testimonialQuote.innerHTML = person.testimonial;
-               photoFLocation.src = person.photo;
-               setTimeout(()=> {
-                  leftOrRight(event,testimonials);
 
-               },1000);
+         if(testimonials.classList.contains('transition--left')===true || testimonials.classList.contains('transition--right')===true) {
+            // console.log('button transition running');
+            console.error('button transition running \nplease wait patiently.');
+            
+         }
+         else if(photoFLocation.classList.contains('animation--photoClickAnimation')===true) {
+            console.error('Photo Animation Running \nplease wait patiently.');
+         }
+         else {
+            leftOrRight(event,testimonials);
+            
+            for(let person of persons) {
+               if(person.fullName !== currentPerson.innerHTML) {
+                  currentPerson.innerHTML = person.fullName;
+                  jobDesc.innerHTML = person.jobDescription;
+                  testimonialQuote.innerHTML = person.testimonial;
+                  photoFLocation.src = person.photo;
+                  setTimeout(()=> {
+                     leftOrRight(event,testimonials);
 
-               photoFLocation.classList.toggle('animation--photoClickAnimation');
+                  },1000);
 
-               setTimeout(()=> {
                   photoFLocation.classList.toggle('animation--photoClickAnimation');
 
-               },6000);
-               break;
+                  setTimeout(()=> {
+                     photoFLocation.classList.toggle('animation--photoClickAnimation');
+
+                  },6000);
+                  break;
+               }
             }
          }
+         
       });
    }
 

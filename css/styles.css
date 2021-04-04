@@ -159,7 +159,7 @@ body {
 
 
 .animation--photoClickAnimation {
-   animation: photoClickAnimation 5s 1s infinite forwards;
+   animation: photoClickAnimation 5s 1s forwards;
 }
 
 .transition--left {
@@ -327,6 +327,7 @@ body {
    .testimonial__img__container {
       grid-column: 2/4;
       position: absolute;
+      transform-origin: left top;
    }
 
    .photo {
