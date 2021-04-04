@@ -39,6 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
                   leftOrRight(event,testimonials);
 
                },1000);
+
+               photoFLocation.classList.toggle('animation--photoClickAnimation');
+
+               setTimeout(()=> {
+                  photoFLocation.classList.toggle('animation--photoClickAnimation');
+
+               },6000);
                break;
             }
          }

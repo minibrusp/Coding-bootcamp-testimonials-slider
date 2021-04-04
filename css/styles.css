@@ -39,12 +39,10 @@ body {
    box-shadow: -1rem 5rem 75px -2.5rem rgb(32 32 70 / 20%);
 }
 
-
 .testimonials {
    position: relative;
    width: 100%;
    margin: 0 auto;
-
 }
 
 .testimonial__items {
@@ -159,12 +157,29 @@ body {
 
 /* Animations  */
 
+
+.animation--photoClickAnimation {
+   animation: photoClickAnimation 5s 1s infinite forwards;
+}
+
 .transition--left {
    animation: FromRight 1s;
 }
 
 .transition--right {
    animation: FromLeft 1s;
+}
+
+
+@keyframes photoClickAnimation {
+
+   30% {
+      transform: rotate3d(0, 1, 0, 180deg);
+   }
+
+   70% {
+      transform: rotate3d(0, 1, 0, 0deg);
+   }
 }
 
 @keyframes FromRight {
@@ -314,6 +329,10 @@ body {
       position: absolute;
    }
 
+   .photo {
+      transform-origin: left top;
+   }
+
    .btn__container {
       left: 90px;
    }
@@ -333,6 +352,60 @@ body {
    .testimonial__author h1 {
       margin: 0;
       margin-right: 10px;
+   }
+
+   @keyframes photoClickAnimation {
+      0% {
+         transform: rotateZ(0deg);
+      }
+
+      20% {
+         transform: rotateZ(20deg);
+      }
+
+      35% {
+         transform: rotateZ(15deg);
+      }
+
+      40% {
+         transform: rotateZ(20deg);
+      }
+
+      45% {
+         transform: rotate(18deg);
+      }
+
+      50% {
+         transform: rotateZ(20deg);
+      }
+
+      55% {
+         transform: rotateZ(19deg);
+      }
+
+      60% {
+         transform: rotateZ(20deg);
+
+      }
+
+      64% {
+         opacity: 1;
+      }
+
+      65% {
+         transform: rotateZ(19.5deg);
+         transform-origin: left top;
+      }
+
+      66% {
+         opacity: 0;
+         transform-origin: center;
+         transform: scale(0);
+      }
+
+      80% {
+         opacity: 0;
+      }
    }
 }
 
