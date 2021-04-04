@@ -47,10 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
    function leftOrRight(e, testimonials) {
       if(e.target.classList.contains('next')===true) {
-         testimonials.classList.toggle('transition--opacity--left');
+         testimonials.classList.toggle('transition--left');
       }
       else if(e.target.classList.contains('prev')==true) {
-         testimonials.classList.toggle('transition--opacity--right');
+         testimonials.classList.toggle('transition--right');
       }
    }
 
