@@ -18,59 +18,94 @@ document.addEventListener('DOMContentLoaded', () => {
       new Person('images/image-john.jpg', 'John Tarkpor', 'Junior Front-end Developer', '“ If you want to lay the best foundation possible I’d recommend taking this course. The depth the instructors go into is incredible. I now feel so confident about starting up as a professional developer. ”')
    ];
 
+   
+
    const buttons = document.querySelectorAll('.btn');
 
+
    for(let button of buttons) {
-      button.addEventListener('click', (event) => {
-         let currentPerson = document.querySelector('.testimonial__author h2');
-         let jobDesc = document.querySelector('.testimonial__author span');
-         let testimonialQuote = document.querySelector('.testimonial__quote p');
-         let photoFLocation = document.querySelector('.photo');
-         let testimonials = document.querySelector('.testimonial__items');
+      eventListeners(button);
+   }
 
-         if(testimonials.classList.contains('transition--left')===true || testimonials.classList.contains('transition--right')===true) {
-            // console.log('button transition running');
-            console.error('button transition running \nplease wait patiently.');
-            
-         }
-         else if(photoFLocation.classList.contains('animation--photoClickAnimation')===true) {
-            console.error('Photo Animation Running \nplease wait patiently.');
-         }
-         else {
-            leftOrRight(event,testimonials);
-            
-            for(let person of persons) {
-               if(person.fullName !== currentPerson.innerHTML) {
-                  currentPerson.innerHTML = person.fullName;
-                  jobDesc.innerHTML = person.jobDescription;
-                  testimonialQuote.innerHTML = person.testimonial;
-                  photoFLocation.src = person.photo;
-                  setTimeout(()=> {
-                     leftOrRight(event,testimonials);
 
-                  },1000);
 
-                  photoFLocation.classList.toggle('animation--photoClickAnimation');
 
-                  setTimeout(()=> {
-                     photoFLocation.classList.toggle('animation--photoClickAnimation');
+   function eventListeners(button) {
+      button.addEventListener('click', btnOnClick);
+   }
 
-                  },6000);
-                  break;
-               }
-            }
-         }
-         
-      });
+   function btnOnClick(event) {
+      let currentPerson = document.querySelector('.testimonial__author h2');
+      let jobDesc = document.querySelector('.testimonial__author span');
+      let testimonialQuote = document.querySelector('.testimonial__quote p');
+      let photoFLocation = document.querySelector('.photo');
+      let testimonials = document.querySelector('.testimonial__items');
+      
+      let checked = hasTransitionNAnimation(testimonials,photoFLocation);
+      if(checked !== true) {
+         leftOrRight(event, testimonials);
+         checkEveryCurrentPerson(event, currentPerson, jobDesc, testimonialQuote, photoFLocation, testimonials);
+      }
+   }
+
+   function hasTransitionNAnimation(testimonials, photoFLocation) {
+      let checker = false;
+      if(testimonials.classList.contains('transition--left')===true|| testimonials.classList.contains('transition--right')===true) {
+         console.error('button transition still running \nplease wait patiently.');
+         checker = true;
+      }
+      if(photoFLocation.classList.contains('animation--photoClickAnimation')===true) {
+         console.error('photo animation still running \nplease wait patiently.')
+         checker = true;
+      }
+      return checker;
    }
 
    function leftOrRight(e, testimonials) {
       if(e.target.classList.contains('next')===true) {
          testimonials.classList.toggle('transition--left');
       }
-      else if(e.target.classList.contains('prev')==true) {
+      if(e.target.classList.contains('prev')==true) {
          testimonials.classList.toggle('transition--right');
       }
+   }
+
+   function checkCurrentPerson(person, currentPerson) {
+      if(person.fullName !== currentPerson.innerHTML) {
+         return true;
+      }
+   }
+
+   function changeVisiblePerson(person, currentPerson, jobDesc, testimonialQuote, photoFLocation) {
+      currentPerson.innerHTML = person.fullName;
+      jobDesc.innerHTML = person.jobDescription;
+      testimonialQuote.innerHTML = person.testimonial;
+      photoFLocation.src = person.photo;
+   }
+
+   function checkEveryCurrentPerson(event, currentPerson, jobDesc, testimonialQuote, photoFLocation, testimonials) {
+      for(let person of persons) {
+         let checked = checkCurrentPerson(person,currentPerson);
+         if(checked === true) {
+            changeVisiblePerson(person, currentPerson, jobDesc, testimonialQuote, photoFLocation);
+            removeAnimationLeftOrRight(event, testimonials);
+            photoFLocation.classList.toggle('animation--photoClickAnimation');
+            removeAnimationPhotoClick(photoFLocation);
+            break;
+         }
+      }
+   }
+
+   function removeAnimationLeftOrRight(event, testimonials) {
+      setTimeout(() => {
+         leftOrRight(event, testimonials);
+      }, 1000);
+   }
+
+   function removeAnimationPhotoClick(photoFLocation) {
+      setTimeout(() => {
+         photoFLocation.classList.toggle('animation--photoClickAnimation');
+      },6000);
    }
 
 });
