@@ -40,12 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let testimonialQuote = document.querySelector('.testimonial__quote p');
       let photoFLocation = document.querySelector('.photo');
       let testimonials = document.querySelector('.testimonial__items');
-      let arrayCurrentPerson = {
-         currentPerson: currentPerson,
-         jobDesc: jobDesc,
-         testimonialQuote: testimonialQuote,
-         photoFLocation: photoFLocation
-      }
+      let arrayCurrentPerson = [currentPerson, jobDesc, testimonialQuote, photoFLocation];
       
       let checked = hasTransitionNAnimation(testimonials,photoFLocation);
       if(checked !== true) {
@@ -78,12 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
    function checkEveryCurrentPerson(event, arrayCurrentPerson, testimonials) {
       for(let person of persons) {
-         let checked = checkCurrentPerson(person, arrayCurrentPerson.currentPerson);
+         // let arrayCurrentPerson = [currentPerson, jobDesc, testimonialQuote, photoFLocation];
+         let checked = checkCurrentPerson(person,arrayCurrentPerson[0]);
          if(checked === true) {
             changeVisiblePerson(person, arrayCurrentPerson);
             removeAnimationLeftOrRight(event, testimonials);
-            arrayCurrentPerson.photoFLocation.classList.toggle('animation--photoClickAnimation');
-            removeAnimationPhotoClick(arrayCurrentPerson.photoFLocation);
+            arrayCurrentPerson[3].classList.toggle('animation--photoClickAnimation');
+            removeAnimationPhotoClick(arrayCurrentPerson[3]);
             break;
          }
       }
@@ -96,10 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
    }
 
    function changeVisiblePerson(person, arrayCurrentPerson) {
-      arrayCurrentPerson.currentPerson.innerHTML = person.fullName;
-      arrayCurrentPerson.jobDesc.innjerHTML = person.jobDescription;
-      arrayCurrentPerson.testimonialQuote.innerHTML = person.testimonial;
-      arrayCurrentPerson.photoFLocation.src = person.photo;
+      arrayCurrentPerson[0].innerHTML = person.fullName;
+      arrayCurrentPerson[1].innerHTML = person.jobDescription;
+      arrayCurrentPerson[2].innerHTML = person.testimonial;
+      arrayCurrentPerson[3].src = person.photo;
    }
 
    function removeAnimationLeftOrRight(event, testimonials) {
