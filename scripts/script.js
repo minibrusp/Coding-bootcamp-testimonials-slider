@@ -41,10 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
       let photoFLocation = document.querySelector('.photo');
       let testimonials = document.querySelector('.testimonial__items');
       let arrayCurrentPerson = {
-         currentPerson: currentPerson,
-         jobDesc: jobDesc,
-         testimonialQuote: testimonialQuote,
-         photoFLocation: photoFLocation
+         currentPerson,
+         jobDesc,
+         testimonialQuote,
+         photoFLocation
       }
       
       let checked = hasTransitionNAnimation(testimonials,photoFLocation);
