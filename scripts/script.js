@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
    }
 
    function btnOnKeyDown(event, arrayCurrentPerson, testimonials) {
+      if(event.keyCode != '39' && event.keyCode != '37') return;
       
       let checked = hasTransitionNAnimation(testimonials,arrayCurrentPerson.photoFLocation);
       if(checked !== true) {
@@ -138,7 +139,7 @@ function leftOrRightKey(e, testimonials) {
    }
 
    function changeCurrentPerson(event, arrayCurrentPerson, testimonials, direction) {
-      
+
       if(direction === 'next') {
          indexOfPerson++;
          indexOfPersonMinMax()
